@@ -1,0 +1,9 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    router:
+        utf8: true
+    session:
+        handler_id: null
+        cookie_secure: auto
+    php_errors:
+        log: true

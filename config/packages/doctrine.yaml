@@ -1,0 +1,23 @@
+doctrine:
+    dbal:
+        driver: 'pdo_mysql'
+        server_version: '8.0'
+        charset: utf8mb4
+        url: '%env(resolve:DATABASE_URL)%'
+
+    orm:
+        auto_generate_proxy_classes: true
+        auto_mapping: false
+        mappings:
+            Core:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Core/Domain/Entity'
+                prefix: 'App\Core\Domain\Entity'
+                alias: Core
+            Finance:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/Finance/Domain/Entity'
+                prefix: 'App\Finance\Domain\Entity'
+                alias: Finance

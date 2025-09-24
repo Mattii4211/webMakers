@@ -1,0 +1,60 @@
+# ----------------------
+# Symfony / PHP
+# ----------------------
+/vendor/
+/var/
+/.env
+.env.local
+.env.*.local
+/.phpunit.result.cache
+/.symfony/
+
+# ----------------------
+# Composer
+# ----------------------
+composer.lock
+
+# ----------------------
+# Logs
+# ----------------------
+/logs/
+/*.log
+
+# ----------------------
+# Docker
+# ----------------------
+docker-compose.override.yml
+**/docker/.env
+**/docker/mysql/*
+**/docker/php/vendor/
+**/docker/nginx/*.conf
+
+# ----------------------
+# OS / Editor / IDE
+# ----------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+.idea/
+*.iml
+.vscode/
+
+# ----------------------
+# PHPUnit / Tests
+# ----------------------
+/phpunit.xml
+/phpunit.xml.dist
+/tests/_output/
+
+# ----------------------
+# Node / Assets (jeśli używasz webpack / encore)
+/node_modules/
+/public/build/
+
+# ----------------------
+# Optional: cache i temp pliki
+/cache/
+*.cache
