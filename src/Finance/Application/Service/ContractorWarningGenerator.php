@@ -12,7 +12,7 @@ final class ContractorWarningGenerator implements WarningGeneratorInterface
     public function generateWarning(object $object, string $className): Warning
     {
         if (!$object instanceof Contractor) {
-            throw new InvalidArgumentException('Expected Invoice object');
+            throw new InvalidArgumentException('Expected Contractor object');
         }
 
         /** @var Contractor $object */

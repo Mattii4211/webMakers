@@ -35,3 +35,4 @@ docker-compose exec php bin/console app:warnings:generate
 * Jak coś nie tak z branchami to pewnie przez przyzwyczajenia :D, ale zasadniczo są main i feature 
 * Trzeba by dopisać testy jednak w ~3h to raczej średnio wykonalne 
 * Z racji małej ilości danych to przeglądanie całych tabel jest ok (zapewne należałooby ustalić które rekordy faktycznie potrzebujemy sprawdzać) ale przy większej ilość Eventy lub CQRS wydają się lepszym podejściem 
+* Jak ręcznie zmienimy kwotę FV a wcześniej istniało ostrzeżenie i po zmianie kwoty nie łapie się w próg 15000 osrzeżenie nie znika, ale tutaj wprowadziłbym osobny mechanizm do zamykania. 
