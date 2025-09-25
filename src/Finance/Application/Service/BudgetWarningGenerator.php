@@ -12,7 +12,7 @@ final class BudgetWarningGenerator implements WarningGeneratorInterface
     public function generateWarning(object $object, string $className): Warning
     {
         if (!$object instanceof Budget) {
-            throw new InvalidArgumentException('Expected Invoice object');
+            throw new InvalidArgumentException('Expected Budget object');
         }
 
         /** @var Budget $object */
