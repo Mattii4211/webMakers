@@ -48,13 +48,11 @@ final class GenerateWarningsCommand extends Command
         }
 
         foreach ($warnings as $warning) {
-            $result = $this->warningRepository->save($warning);
-
             if (!isset($resultsArray[$warning->getCategory()])) {
                 $resultsArray[$warning->getCategory()] = ['inserted' => 0, 'updated' => 0];
             }
 
-            $resultsArray[$warning->getCategory()][$result->value]++;
+            $resultsArray[$warning->getCategory()][$this->warningRepository->save($warning)->value]++;
         }
 
         $output->writeln('================================');
@@ -68,7 +66,7 @@ final class GenerateWarningsCommand extends Command
                 $category,
                 $inserted,
                 $updated,
-                $currentWarningsArray[$category],
+                $currentWarningsArray[$category] ?? 0,
             ));
         }
 
