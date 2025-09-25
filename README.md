@@ -15,16 +15,13 @@ Linux/MacOS:
 
 ```
 
+## Wypełnienie bazy:
+```bash
+docker-compose exec php php bin/console doctrine:fixtures:load --env=dev
+```
+
 ## Komenda CLI
 Generowanie ostrzeżeń:
 ```bash
 docker-compose exec php bin/console app:warnings:generate
 ```
-
-## Architektura
-- **Finance**: Contractor, Invoice, Budget
-- **Core**: Warning
-- Warstwy: Domain (encje, interfejsy repozytoriów), Application (use-case), Infrastructure (Doctrine, CLI).
-
-## Fixtures
-Dodane przykładowe dane: 1 kontrahent, 1 budżet z ujemnym saldem, 1 faktura przeterminowana.

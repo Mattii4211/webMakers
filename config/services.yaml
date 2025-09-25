@@ -34,3 +34,7 @@ services:
 
     App\Finance\Infrastructure\Persistence\Doctrine\:
         resource: '../src/Finance/Infrastructure/Persistence/Doctrine/*'
+
+    App\DataFixtures\:
+        resource: '../src/DataFixtures'
+        tags: ['doctrine.fixture.orm']

@@ -13,13 +13,13 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "contractors")]
-final class Contractor
+class Contractor
 {
     use TimestampableTrait;
     private const WARNING_INVOICE_AMOUNT = 15000;
 
     #[ORM\Id]
-    #[ORM\Column(type: "uuid", unique: true)]
+    #[ORM\Column(type: "uuid_binary", unique: true)]
     #[ORM\GeneratedValue(strategy: "NONE")]
     private UuidInterface $id;
 

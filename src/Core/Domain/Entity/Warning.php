@@ -21,7 +21,7 @@ final class Warning
     use TimestampableTrait;
 
     #[ORM\Id]
-    #[ORM\Column(type: "uuid", unique: true)]
+    #[ORM\Column(type: "uuid_binary", unique: true)]
     #[ORM\GeneratedValue(strategy: "NONE")]
     private UuidInterface $id;
 
