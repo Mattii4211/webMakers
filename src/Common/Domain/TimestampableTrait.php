@@ -37,4 +37,9 @@ trait TimestampableTrait
         $this->deletedAt = $deletedAt;
         $this->updatedAt = new DateTime();
     }
+
+    public function setUpdatedAt(DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
 }

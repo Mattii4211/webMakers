@@ -18,10 +18,6 @@ final class GenerateWarningsHandler
         private BudgetRepositoryInterface $budgetRepository,
         private ContractorRepositoryInterface $contractorRepository,
     ) {
-        $this->generateWarningsFactory = $generateWarningsFactory;
-        $this->invoiceRespository = $invoiceRespository;
-        $this->budgetRepository = $budgetRepository;
-        $this->contractorRepository = $contractorRepository;
     }
 
     /** @return Warning[] */
