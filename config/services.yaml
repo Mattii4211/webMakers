@@ -1,0 +1,40 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Core\:
+        resource: '../src/Core/*'
+        exclude: '../src/Core/Domain/Entity'
+
+    App\Core\Application\Command\:
+        resource: '../src/Core/Application/Command'
+        tags: ['console.command']
+        public: true
+
+    App\Core\Application\Service\:
+        resource: '../src/Core/Application/Service/*'
+
+    App\Core\Domain\Repository\:
+        resource: '../src/Core/Domain/Repository/*'
+
+    App\Core\Infrastructure\Persistence\Doctrine\:
+        resource: '../src/Core/Infrastructure/Persistence/Doctrine/*'
+
+    App\Finance\:
+        resource: '../src/Finance/*'
+        exclude: '../src/Finance/Domain/Entity'
+
+    App\Finance\Application\Service\:
+        resource: '../src/Finance/Application/Service/*'
+
+    App\Finance\Domain\Repository\:
+        resource: '../src/Finance/Domain/Repository/*'
+
+    App\Finance\Infrastructure\Persistence\Doctrine\:
+        resource: '../src/Finance/Infrastructure/Persistence/Doctrine/*'
+
+    App\DataFixtures\:
+        resource: '../src/DataFixtures'
+        tags: ['doctrine.fixture.orm']
