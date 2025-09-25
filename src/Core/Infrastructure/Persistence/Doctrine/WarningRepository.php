@@ -76,8 +76,8 @@ class WarningRepository implements WarningRepositoryInterface
             ->where('w.deletedAt IS NULL');
 
         if ($lastUpdateDate instanceof DateTime) {
-            $qb->andWhere('w.updatedAt < :fromDate')
-               ->setParameter('fromDate', $lastUpdateDate);
+            $qb->andWhere('w.updatedAt < :lastUpdateDate')
+               ->setParameter('lastUpdateDate', $lastUpdateDate);
         }
 
         return $qb->getQuery()->getResult();
