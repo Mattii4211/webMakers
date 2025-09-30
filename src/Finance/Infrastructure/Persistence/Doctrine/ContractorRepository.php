@@ -2,11 +2,15 @@
 
 namespace App\Finance\Infrastructure\Persistence\Doctrine;
 
+use App\Core\Domain\Repository\WarningSourceRepositoryInterface;
 use App\Finance\Domain\Entity\Contractor;
 use App\Finance\Domain\Repository\ContractorRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class ContractorRepository implements ContractorRepositoryInterface
+/**
+ * @implements WarningSourceRepositoryInterface<Contractor>
+ */
+class ContractorRepository implements ContractorRepositoryInterface, WarningSourceRepositoryInterface
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager,

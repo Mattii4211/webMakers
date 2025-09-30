@@ -5,8 +5,12 @@ namespace App\Finance\Infrastructure\Persistence\Doctrine;
 use App\Finance\Domain\Repository\InvoiceRespositoryInterface;
 use App\Finance\Domain\Entity\Invoice;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Core\Domain\Repository\WarningSourceRepositoryInterface;
 
-class InvoiceRepository implements InvoiceRespositoryInterface
+/**
+ * @implements WarningSourceRepositoryInterface<Invoice>
+ */
+class InvoiceRepository implements InvoiceRespositoryInterface, WarningSourceRepositoryInterface
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager,

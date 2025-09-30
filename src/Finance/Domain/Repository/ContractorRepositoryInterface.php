@@ -11,7 +11,4 @@ interface ContractorRepositoryInterface
 
     /** @return Contractor[] */
     public function findAll(): array;
-
-    /** @return Contractor[] */
-    public function findAllWithWarning(): array;
 }

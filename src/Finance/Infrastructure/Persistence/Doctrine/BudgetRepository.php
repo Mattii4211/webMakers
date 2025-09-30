@@ -2,11 +2,15 @@
 
 namespace App\Finance\Infrastructure\Persistence\Doctrine;
 
+use App\Core\Domain\Repository\WarningSourceRepositoryInterface;
 use App\Finance\Domain\Entity\Budget;
 use App\Finance\Domain\Repository\BudgetRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class BudgetRepository implements BudgetRepositoryInterface
+/**
+ * @implements WarningSourceRepositoryInterface<Budget>
+ */
+class BudgetRepository implements BudgetRepositoryInterface, WarningSourceRepositoryInterface
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager,

@@ -6,7 +6,14 @@ services:
 
     App\Core\:
         resource: '../src/Core/*'
-        exclude: '../src/Core/Domain/Entity'
+        exclude:
+            - '../src/Core/Application/Service/GenerateWarningsHandler.php'
+            - '../src/Core/Domain/Entity'
+
+
+    App\Core\Application\Service\GenerateWarningsHandler:
+        arguments:
+            $repositories: !tagged_iterator app.warning_source
 
     App\Core\Application\Command\:
         resource: '../src/Core/Application/Command'
@@ -15,6 +22,8 @@ services:
 
     App\Core\Application\Service\:
         resource: '../src/Core/Application/Service/*'
+        exclude:
+            - '../src/Core/Application/Service/GenerateWarningsHandler.php'
 
     App\Core\Domain\Repository\:
         resource: '../src/Core/Domain/Repository/*'
@@ -32,8 +41,20 @@ services:
     App\Finance\Domain\Repository\:
         resource: '../src/Finance/Domain/Repository/*'
 
-    App\Finance\Infrastructure\Persistence\Doctrine\:
-        resource: '../src/Finance/Infrastructure/Persistence/Doctrine/*'
+    App\Finance\Infrastructure\Persistence\Doctrine\BudgetRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags: ['app.warning_source']
+
+    App\Finance\Infrastructure\Persistence\Doctrine\InvoiceRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags: ['app.warning_source']
+
+    App\Finance\Infrastructure\Persistence\Doctrine\ContractorRepository:
+        arguments:
+            $entityManager: '@doctrine.orm.entity_manager'
+        tags: ['app.warning_source']
 
     App\DataFixtures\:
         resource: '../src/DataFixtures'
