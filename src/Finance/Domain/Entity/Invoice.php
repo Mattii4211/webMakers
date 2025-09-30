@@ -10,6 +10,7 @@ use DateTimeImmutable;
 use DateTime;
 
 #[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: "invoices")]
 final class Invoice
 {
@@ -47,7 +48,7 @@ final class Invoice
         $this->updatedAt = new DateTime();
     }
 
-    public function isWarrning(): bool
+    public function isWarning(): bool
     {
         return $this->isOverdue();
     }

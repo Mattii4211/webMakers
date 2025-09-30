@@ -11,4 +11,7 @@ interface InvoiceRespositoryInterface
 
     /** @return Invoice[] */
     public function findAll(): array;
+
+    /** @return Invoice[] */
+    public function findAllWithWarning(): array;
 }

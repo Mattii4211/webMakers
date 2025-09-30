@@ -42,4 +42,17 @@ trait TimestampableTrait
     {
         $this->updatedAt = $updatedAt;
     }
+
+    #[ORM\PrePersist]
+    public function initializeTimestamps(): void
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->updatedAt = new DateTime();
+    }
+
+    #[ORM\PreUpdate]
+    public function updateTimestamp(): void
+    {
+        $this->updatedAt = new DateTime();
+    }
 }

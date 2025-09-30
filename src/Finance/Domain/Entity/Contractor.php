@@ -12,6 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: "contractors")]
 class Contractor
 {
@@ -41,7 +42,7 @@ class Contractor
         $this->invoices = new ArrayCollection();
     }
 
-    public function isWarrning(): bool
+    public function isWarning(): bool
     {
         $invoiceAmount = 0;
         foreach ($this->invoices as $invoice) {

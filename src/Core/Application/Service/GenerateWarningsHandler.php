@@ -9,6 +9,9 @@ use App\Core\Domain\Entity\Warning;
 use App\Finance\Domain\Repository\BudgetRepositoryInterface;
 use App\Finance\Domain\Repository\ContractorRepositoryInterface;
 use App\Finance\Domain\Repository\InvoiceRespositoryInterface;
+use App\Finance\Domain\Entity\Invoice;
+use App\Finance\Domain\Entity\Budget;
+use App\Finance\Domain\Entity\Contractor;
 
 final class GenerateWarningsHandler
 {
@@ -20,32 +23,29 @@ final class GenerateWarningsHandler
     ) {
     }
 
-    /** @return Warning[] */
-    public function generate(): array
+    /**
+     * @param iterable<Invoice|Budget|Contractor> $entities
+     * @return list<Warning>
+     */
+    private function collectWarnings(iterable $entities): array
     {
         $warnings = [];
-
-        $invoices = $this->invoiceRespository->findAll();
-        foreach ($invoices as $invoice) {
-            if ($invoice->isWarrning()) {
-                $warnings[] = $this->generateWarningsFactory->create($invoice);
-            }
-        }
-
-        $budgets = $this->budgetRepository->findAll();
-        foreach ($budgets as $budget) {
-            if ($budget->isWarrning()) {
-                $warnings[] = $this->generateWarningsFactory->create($budget);
-            }
-        }
-
-        $contractors = $this->contractorRepository->findAll();
-        foreach ($contractors as $contractor) {
-            if ($contractor->isWarrning()) {
-                $warnings[] = $this->generateWarningsFactory->create($contractor);
+        foreach ($entities as $entity) {
+            if ($entity->isWarning()) {
+                $warnings[] = $this->generateWarningsFactory->create($entity);
             }
         }
 
         return $warnings;
+    }
+
+    /** @return Warning[] */
+    public function generate(): array
+    {
+        return array_merge(
+            $this->collectWarnings($this->invoiceRespository->findAllWithWarning()),
+            $this->collectWarnings($this->budgetRepository->findAllWithWarning()),
+            $this->collectWarnings($this->contractorRepository->findAllWithWarning()),
+        );
     }
 }

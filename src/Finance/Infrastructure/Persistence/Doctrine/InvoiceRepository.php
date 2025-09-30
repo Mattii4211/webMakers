@@ -42,4 +42,10 @@ class InvoiceRepository implements InvoiceRespositoryInterface
             ->getQuery()
             ->getResult();
     }
+
+    /** @return Invoice[] */
+    public function findAllWithWarning(): array
+    {
+        return array_filter($this->findAll(), fn ($c) => $c->isWarning());
+    }
 }

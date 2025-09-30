@@ -42,4 +42,10 @@ class ContractorRepository implements ContractorRepositoryInterface
             ->getQuery()
             ->getResult();
     }
+
+    /** @return Contractor[] */
+    public function findAllWithWarning(): array
+    {
+        return array_filter($this->findAll(), fn ($c) => $c->isWarning());
+    }
 }

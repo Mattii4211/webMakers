@@ -42,4 +42,10 @@ class BudgetRepository implements BudgetRepositoryInterface
             ->getQuery()
             ->getResult();
     }
+
+    /** @return Budget[] */
+    public function findAllWithWarning(): array
+    {
+        return array_filter($this->findAll(), fn ($c) => $c->isWarning());
+    }
 }

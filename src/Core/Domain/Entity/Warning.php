@@ -10,6 +10,7 @@ use DateTimeImmutable;
 use DateTime;
 
 #[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(
     name: "warnings",
     uniqueConstraints: [

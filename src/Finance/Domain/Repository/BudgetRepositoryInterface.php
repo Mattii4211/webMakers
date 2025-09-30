@@ -11,4 +11,7 @@ interface BudgetRepositoryInterface
 
     /** @return Budget[] */
     public function findAll(): array;
+
+    /** @return Budget[] */
+    public function findAllWithWarning(): array;
 }

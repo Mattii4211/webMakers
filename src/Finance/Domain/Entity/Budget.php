@@ -10,6 +10,7 @@ use DateTimeImmutable;
 use DateTime;
 
 #[ORM\Entity]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Table(name: "budgets")]
 final class Budget
 {
@@ -35,7 +36,7 @@ final class Budget
         $this->updatedAt = new DateTime();
     }
 
-    public function isWarrning(): bool
+    public function isWarning(): bool
     {
         return $this->balance < 0;
     }
