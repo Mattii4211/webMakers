@@ -2,16 +2,21 @@ name: webmakers-php-developer
 services:
   php:
     build:
-      context: ./docker/php
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     volumes:
       - .:/var/www/html
     depends_on:
       - db
     environment:
       DATABASE_URL: "mysql://symfony:symfony@db:3306/app_db"
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
     working_dir: /var/www/html
     container_name: webmakers-php
     command: tail -f /dev/null
+    ports:
+      - "9003:9003"
 
   db:
     image: mysql:8.0
